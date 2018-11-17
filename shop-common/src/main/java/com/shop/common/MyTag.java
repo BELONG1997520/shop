@@ -9,7 +9,8 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-
-public  @interface MyTag {
-          int age()   default 0;
+//TODO 类名不规范 根据需求IP拦截相关 起名字
+public @interface MyTag {
+    //名字age规定无任何用处
+    int age() default 0;
 }

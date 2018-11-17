@@ -4,8 +4,14 @@
   <artifactId>shop-parent</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
-  
- 
+
+  <modules>
+	  <module>shop-common</module>
+	  <module>shop-service</module>
+	  <module>shop-pojo</module>
+	  <module>shop-mapper</module>
+	  <module>shop-controller</module>
+  </modules>
 	<!-- 集中定义依赖版本号 -->
 	<properties>
 		<junit.version>4.12</junit.version>
@@ -32,7 +38,7 @@
 		<solrj.version>4.10.3</solrj.version>
 		<spring-boot-starter-aop.version>1.5.4.RELEASE</spring-boot-starter-aop.version>
 	</properties>
-	
+
 	<!-- 只定义依赖的版本，并不实际依赖 -->
 	<dependencyManagement>
 		<dependencies>
