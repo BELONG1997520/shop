@@ -2,17 +2,17 @@ package com.shop.pojo;
 
 import java.util.Date;
 
-public class Content {
+public class TbItem {
 
-	private int id;
+	private long  id;
 	private String name;
 	private String  titleDesc;
 	private  Date   created;
 	private Date updated;
-	public int getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -21,7 +21,6 @@ public class Content {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
 	public String getTitleDesc() {
 		return titleDesc;
 	}
@@ -40,5 +39,4 @@ public class Content {
 	public void setUpdated(Date updated) {
 		this.updated = updated;
 	}
-	
 }

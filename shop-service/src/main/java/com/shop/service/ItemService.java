@@ -2,29 +2,29 @@ package com.shop.service;
 
 import java.util.List;
 
-import com.shop.pojo.Content;
+import com.shop.pojo.TbItem;
 
 public interface ItemService {
 	/**
 	 * 查询商品列表
 	 * @return
 	 */
-	List<Content>  queryItemList();
+	List<TbItem>  queryItemList(long id);
 	/**
 	 * 更新商品列表信息
 	 * @param record
 	 * @return
 	 */
-	int updateByPrimaryKey();
+	int updateByPrimaryKey(TbItem record);
 	/**
 	 * 商品的删除
 	 * @return
 	 */
-	int deleteItemById();
+	int deleteItemById(long id);
 	/**
 	 * 商品的增加
 	 * @return
 	 */
-	int addItem();
+	int addItem(TbItem record);
 	
 }
