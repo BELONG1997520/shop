@@ -36,7 +36,7 @@ public class IpRestrictions {
             ip = httpServletRequest.getHeader("Proxy-Client-IP：apache ");
 
         }
-        if (!ip.equalsIgnoreCase("127.0.0.1")) {
+        if (!ip.equalsIgnoreCase("127.0.0.1") && !"0:0:0:0:0:0:0:1".equalsIgnoreCase(ip)) {
             throw new RuntimeException("forbidden 403");
         }
     }
