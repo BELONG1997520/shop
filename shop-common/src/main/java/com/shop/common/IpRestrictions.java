@@ -1,35 +1,45 @@
 package com.shop.common;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.aspectj.internal.lang.annotation.ajcDeclareAnnotation;
+import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Component
 @Aspect
 public class IpRestrictions {
-  
-	  // Controller层切点
+
+    @Autowired
+    private HttpServletRequest httpServletRequest;
+
+    // Controller层切点
     @Pointcut("@annotation(com.shop.common.IpInterception)")
     public void controllerAspect() {
     }
 
     @Before(value = "controllerAspect()")
-	public String getRemortIP(HttpServletRequest request) { 
-		//Proxy-Client-IP：apache 服务代理
-		  if (request.getHeader("Proxy-Client-IP") == null) { 
+    public void getRemortIP(JoinPoint joinPoint) {
+        String ip = null;
+        //Proxy-Client-IP：apache 服务代理
+        if (httpServletRequest.getHeader("Proxy-Client-IP") == null) {
 
-		    return request.getRemoteAddr(); 
+            ip = httpServletRequest.getRemoteAddr();
 
-		  } 
+        }
 
-		  return request.getHeader("Proxy-Client-IP：apache "); 
+        if (StringUtils.isEmpty(ip)) {
+            ip = httpServletRequest.getHeader("Proxy-Client-IP：apache ");
 
-		}
-  }
+        }
+        if (!ip.equalsIgnoreCase("127.0.0.1")) {
+            throw new RuntimeException("forbidden 403");
+        }
+    }
+}
 
 
