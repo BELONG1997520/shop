@@ -25,6 +25,7 @@ public class IndexController {
     @Autowired
     private ItemService itemServcie;
     @RequestMapping("/index")
+    @ResponseBody
     public String showIndex(Model model) {
         LOGGER.info("123456");
         return "index";
@@ -39,6 +40,7 @@ public class IndexController {
     }
 
     @RequestMapping("/updateByPrimaryKey")
+    @ResponseBody
     public String updateByPrimaryKeyt() {
         int itemList = itemServcie.updateByPrimaryKey(null);
         LOGGER.info("123456");
@@ -46,6 +48,7 @@ public class IndexController {
     }
 
     @RequestMapping("/deleteItemById")
+    @ResponseBody
     @IpInterception()
     public String deleteItemById(@RequestParam long id) {
         int itemList = itemServcie.deleteItemById(id);

@@ -19,35 +19,39 @@ public class ItemServiceImpl implements ItemService {
 	@Autowired
 	private TbItemMapper itemMapper;
 
+	//查询
 	@Override
 	public List<TbItem> queryItemList(long id) {
-		 List<TbItem> contentList = itemMapper.queryItemList(id );
-		 if(contentList == null || contentList.size() == 0){
+		 List<TbItem> ItemList = itemMapper.queryItemList(id );
+		 if(ItemList == null || ItemList.size() == 0){
 			 return new ArrayList<>();
 		 }
-		 return contentList;
+		 return ItemList;
 	}
 	
+	//修改
 	@Override
 	public int updateByPrimaryKey(TbItem record) {
-	int contentList=	itemMapper.updateByPrimaryKey(record);
-		return contentList;
+	int ItemList=	itemMapper.updateByPrimaryKey(record);
+		return ItemList;
 	}
 
+	//删除
 	@Override
 	public int deleteItemById(long id) {
-		int  contentList=itemMapper.delete(id);
-		return contentList;
+		int  ItemList=itemMapper.delete(id);
+		return ItemList;
 	}
 
+	//添加
 	@Override
 	public int addItem(TbItem  record) {
 		//创建一个pojo
 		TbItem item=new TbItem();
 		//item.setId(id);
 		item.setId(0);
-		item.setName("name");
-		item.setTitleDesc("titleDesc");
+		item.setName("手机");
+		item.setTitleDesc("性价比");
 		item.setCreated(new Date());
 		item.setUpdated(new Date());
 		//向表中插入数据
