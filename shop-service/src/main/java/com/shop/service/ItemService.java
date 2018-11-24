@@ -9,13 +9,13 @@ public interface ItemService {
 	 * 查询商品列表
 	 * @return
 	 */
-	List<TbItem>  queryItemList(long id);
+	List<TbItem>  queryItemList();
 	/**
 	 * 更新商品列表信息
 	 * @param record
 	 * @return
 	 */
-	int updateByPrimaryKey(TbItem record);
+	int updateByPrimaryKey(long id,String name);
 	/**
 	 * 商品的删除
 	 * @return

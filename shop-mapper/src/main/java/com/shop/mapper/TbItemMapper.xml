@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.shop.mapper.ContentMapper">
-	<resultMap id="BaseResultMap" type="com.shop.pojo.Content">
+<mapper namespace="com.shop.mapper.Tb_ItemMapper">
+	<resultMap id="BaseResultMap" type="com.shop.pojo.Tb_Item">
 		<id column="id" jdbcType="INTEGER" property="id" />
 		<result column="name" jdbcType="VARCHAR" property="name" />
 		<result column="title_desc" jdbcType="VARCHAR" property="titleDesc" />
@@ -12,17 +12,17 @@
 
 	<select id="queryItemList" parameterType="com.shop.pojo.TbItem"
 		resultMap="BaseResultMap">
-		select * from content
+		select * from Tb_Item
 	</select>
 
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
 		delete from
-		content
+		Tb_Item
 		where id = #{id,jdbcType=INTEGER}
 	</delete>
 
 	<insert id="insert" parameterType="com.shop.pojo.TbItem">
-		insert into content (id, name,
+		insert into Tb_Item (id, name,
 		title_desc,
 		created, updated)
 		values (#{id,jdbcType=INTEGER},
@@ -32,17 +32,17 @@
 	</insert>
 
 	<update id="updateByPrimaryKey" parameterType="com.shop.pojo.TbItem">
-		update content
-		set
-		id = #{record.id,jdbcType=INTEGER},
-		name =
-		#{record.name,jdbcType=VARCHAR},
-		title_desc =
-		#{record.titleDesc,jdbcType=VARCHAR},
-		created =
-		#{record.created,jdbcType=TIMESTAMP},
-		updated =
-		#{record.updated,jdbcType=TIMESTAMP}
+	update Tb_Item
+	set
 
+	name =
+	#{record.name,jdbcType=VARCHAR},
+	title_desc =
+	#{record.titleDesc,jdbcType=VARCHAR},
+	created =
+	#{record.created,jdbcType=TIMESTAMP},
+	updated =
+	#{record.updated,jdbcType=TIMESTAMP}
+<!-- 少一个where条件语句通过id更新 -->
 	</update>
 </mapper>

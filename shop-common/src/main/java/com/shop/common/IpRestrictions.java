@@ -2,24 +2,32 @@ package com.shop.common;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.aspectj.internal.lang.annotation.ajcDeclareAnnotation;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 @Component
 @Aspect
 public class IpRestrictions {
   
-	public String getRemortIP(HttpServletRequest request) { 
+	  // Controller层切点
+    @Pointcut("@annotation(com.shop.common.IpInterception)")
+    public void controllerAspect() {
+    }
 
-		  if (request.getHeader("x-forwarded-for") == null) { 
+    @Before(value = "controllerAspect()")
+	public String getRemortIP(HttpServletRequest request) { 
+		//Proxy-Client-IP：apache 服务代理
+		  if (request.getHeader("Proxy-Client-IP") == null) { 
 
 		    return request.getRemoteAddr(); 
 
 		  } 
 
-		  return request.getHeader("x-forwarded-for"); 
+		  return request.getHeader("Proxy-Client-IP：apache "); 
 
 		}
   }
